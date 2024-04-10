@@ -1,21 +1,16 @@
 class Solution {
     public int[] deckRevealedIncreasing(int[] deck) {
-        int N = deck.length;
-        int[] result = new int[N];
-        boolean skip = false;
-        int indexInDeck = 0;
-        int indexInResult = 0;
+        Deque<Integer> deque = new ArrayDeque<>();
         Arrays.sort(deck);
-        while (indexInDeck < N) {
-            if (result[indexInResult] == 0) {
-                if (!skip) {
-                    result[indexInResult] = deck[indexInDeck];
-                    indexInDeck++;
-                }
-                skip = !skip;
-            }
-            indexInResult = (indexInResult + 1) % N;
+        deque.offer(deck[deck.length - 1]);
+        for (int i = deck.length - 2; i >= 0; i--) {
+            deque.addFirst(deque.removeLast());
+            deque.addFirst(deck[i]);
         }
-        return result;
+        int[] answer = new int[deque.size()];
+        int idx = 0;
+        for (int num : deque)
+            answer[idx++] = num;
+        return answer;
     }
 }
