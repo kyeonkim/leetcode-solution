@@ -15,10 +15,8 @@
  */
 class Solution {
     public TreeNode addOneRow(TreeNode root, int val, int depth) {
-        if (depth == 1) {
-            TreeNode newNode = new TreeNode(val, root, null);
-            return newNode;
-        }
+        if (depth == 1)
+            return new TreeNode(val, root, null);
         addOne(root, val, depth, 2);
         return root;
     }
