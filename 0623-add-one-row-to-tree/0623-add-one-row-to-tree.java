@@ -23,10 +23,8 @@ class Solution {
 
     public void addOne(TreeNode root, int val, int depth, int curDepth) {
         if (curDepth == depth) {
-            TreeNode newNodeLeft = new TreeNode(val, root.left, null);
-            TreeNode newNodeRight = new TreeNode(val, null, root.right);
-            root.left = newNodeLeft;
-            root.right = newNodeRight;
+            root.left = new TreeNode(val, root.left, null);
+            root.right = new TreeNode(val, null, root.right);
             return ;
         }
         if (root.left != null)
