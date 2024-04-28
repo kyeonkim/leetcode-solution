@@ -84,7 +84,7 @@ class Solution {
         int[] childCnt = new int[n];
         Arrays.fill(childCnt, 1);
         postOrder(0, -1, nodes, childCnt, answer);
-        // preOrder(0, -1, nodes, childCnt, answer, n);
+        preOrder(0, -1, nodes, childCnt, answer, n);
         return answer;
     }
 
