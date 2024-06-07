@@ -29,19 +29,11 @@ class Solution {
     }
 
     private String checkDict(Map<Character, List<String>> dict, String word, char key) {
-        List<String> checkList = dict.get(key);
-        String matchedWord = word;
-
-        for (int i = 0; i < checkList.size(); i++) {
-            String checkWord = checkList.get(i);
-            if (word.length() >= checkWord.length()) {
-                String subWord = word.substring(0, checkWord.length());
-                if (subWord.equals(checkWord)) {
-                    matchedWord = checkWord;
-                    break;
-                }
+        for (String dictWord : dict.get(key)) {
+            if (word.startsWith(dictWord)) {
+                return dictWord;
             }
         }
-        return matchedWord;
+        return word;
     }
 }
